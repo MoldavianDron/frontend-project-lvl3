@@ -1,0 +1,32 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "RSS Agregator",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MoldavianDron/frontend-project-lvl3.git"
+  },
+  "author": "Andrei Zaporojan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MoldavianDron/frontend-project-lvl3/issues"
+  },
+  "homepage": "https://github.com/MoldavianDron/frontend-project-lvl3#readme",
+  "devDependencies": {
+    "css-loader": "^6.8.1",
+    "eslint": "^8.54.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
