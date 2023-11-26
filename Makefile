@@ -2,5 +2,7 @@ install:
 	npm ci
 lint:
 	npx eslint .
-build:
-	npx webpack --config webpack.config.js
+build-dev:
+	npx webpack --config webpack.dev.js
+build-prod:
+	npx webpack --config webpack.prod.js
