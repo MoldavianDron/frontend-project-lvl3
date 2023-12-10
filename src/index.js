@@ -21,22 +21,32 @@ setLocale({
   }
 })
 
+const successFetch = (url) => new Promise((resolve) => {
+  setTimeout(resolve, 2000)
+}).then((_) => {
+  watchedState.asyncRSS = {
+    status: Status.SUCCESS,
+    context: {
+      displayMessage: "RSS успешно загружен",
+    }
+  }
+  watchedState.feeds.push(url);
+});
+
 const validateURL = (url) => {
   const schema = string().url();
-  watchedState.asyncRSS.status = Status.LOADING;
-  watchedState.asyncRSS.context = null;
+  
   schema.validate(url)
     .then((url) => {
       if (watchedState.feeds.includes(url)) {
         throw new ValidationError("RSS уже существует");
       }
       watchedState.asyncRSS = {
-        status: Status.SUCCESS,
-        context: {
-          displayMessage: "RSS успешно загружен",
-        }
+        status: Status.LOADING,
+        context: null
       }
-      watchedState.feeds.push(url);
+      
+      successFetch(url).then((_) =>console.log("finish"));
     })
     .catch((error) => {
       watchedState.asyncRSS = {
