@@ -4,7 +4,7 @@ import {Status} from "./constants.js";
 
 const state = {
   asyncRSS: {status: Status.IDLE, context: null},
-  feeds: [],
+  downloadedFeeds: [],
 }
 
 const clearStatusMessage = (statusMessageContainer, prevState) => {
