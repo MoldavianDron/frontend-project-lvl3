@@ -1,6 +1,6 @@
 import {setLocale, string} from "yup";
 
-import {watchedState} from "../view.js";
+import {watchedModel} from "src/model.js";
 
 export const validateURL = (url) => {
   setLocale({
@@ -11,6 +11,6 @@ export const validateURL = (url) => {
       notOneOf: "RSS уже существует",
     }
   });
-  const schema = string().url().notOneOf(watchedState.downloadedFeeds);
+  const schema = string().url().notOneOf(watchedModel.downloadedSources);
   return schema.validate(url);
-}
+};

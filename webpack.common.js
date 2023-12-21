@@ -26,7 +26,12 @@ const wpCommon = {
     new HtmlWebpackPlugin({
       filename: "../index.html"
     })
-  ]
+  ],
+  resolve: {
+    alias: {
+      "src": path.resolve(__dirname, "src")
+    }
+  }
 }
 
 export default wpCommon;

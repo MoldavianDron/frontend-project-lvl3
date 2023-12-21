@@ -1,8 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import downloadRss from "./download-rss/index.js";
+import { downloadRss } from "./controller/download-rss/index.js";
 import { init } from "./init.js";
-import {watchedState} from "./view.js";
+import {watchedModel} from "./model.js";
 import {Status} from "./constants.js";
 
 init();
@@ -14,21 +14,13 @@ form.addEventListener("submit", (event) => {
   const url = formData.get("url");
   downloadRss(url)
     .then((rssObject) => {
-      watchedState.asyncRSS = {
-        status: Status.SUCCESS,
-        context: {
-          displayMessage: "RSS успешно загружен",
-          rss: rssObject,
-        }
-      }
-      watchedState.downloadedFeeds.push(url);
+      watchedModel.status = Status.SUCCESS;
+      watchedModel.statusMessage = "RSS успешно загружен";
+      watchedModel.downloadedSources.push(url);
+      watchedModel.rssObjects.push(rssObject);
     })
     .catch((error) => {
-      watchedState.asyncRSS = {
-        status: Status.ERROR,
-        context: {
-          displayMessage: error.message,
-        }
-      }
+      watchedModel.status = Status.ERROR;
+      watchedModel.statusMessage = error.message;
     });
 });
