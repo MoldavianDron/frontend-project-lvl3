@@ -1,14 +1,15 @@
 import {setLocale, string} from "yup";
+import i18next from "i18next";
 
 import {watchedModel} from "src/model.js";
 
 export const validateURL = (url) => {
   setLocale({
     string: {
-      url: "Ссылка должна быть валидным URL",
+      url: i18next.t("errors.no-valid-url"),
     },
     mixed: {
-      notOneOf: "RSS уже существует",
+      notOneOf: i18next.t("errors.rss-exists"),
     }
   });
   const schema = string().url().notOneOf(watchedModel.downloadedSources);

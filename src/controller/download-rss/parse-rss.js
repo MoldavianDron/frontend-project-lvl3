@@ -1,8 +1,10 @@
+import i18next from "i18next";
+
 export const parseRss = (rawData) => {
   const parsedDocument = new DOMParser().parseFromString(rawData, "application/xml");
   const parseError = parsedDocument.querySelector("parsererror");
   if (parseError) {
-    throw new Error("Ресурс не содержит валидный RSS");
+    throw new Error(i18next.t("errors.no-valid-rss"));
   }
   const channel = parsedDocument.querySelector("channel");
   const channelTitle = channel.querySelector("title")?.textContent;
